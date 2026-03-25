@@ -1,0 +1,864 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-03-25T18:31:06.249Z",
+  "stack": {
+    "primaryLanguage": "javascript",
+    "languages": [
+      "python",
+      "javascript"
+    ],
+    "frameworks": [],
+    "buildTools": [],
+    "testFrameworks": [],
+    "packageManager": null,
+    "isMonorepo": false,
+    "hasDocker": false,
+    "hasCI": false
+  },
+  "structure": {
+    "totalFiles": 1139,
+    "rootPath": ".",
+    "topDirectories": [
+      {
+        "name": "artifacts-builder",
+        "fileCount": 5,
+        "description": "Build output directory"
+      },
+      {
+        "name": "brand-guidelines",
+        "fileCount": 2,
+        "description": "Brand-guideline definitions"
+      },
+      {
+        "name": "canvas-design",
+        "fileCount": 83,
+        "description": "Module directory"
+      },
+      {
+        "name": "changelog-generator",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "competitive-ads-extractor",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "composio-skills",
+        "fileCount": 832,
+        "description": "Skill definitions"
+      },
+      {
+        "name": "connect",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "connect-apps",
+        "fileCount": 1,
+        "description": "Application entry (Next.js app router)"
+      },
+      {
+        "name": "connect-apps-plugin",
+        "fileCount": 2,
+        "description": "Application entry (Next.js app router)"
+      },
+      {
+        "name": "content-research-writer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "developer-growth-analysis",
+        "fileCount": 1,
+        "description": "Developer-growth-analysi definitions"
+      },
+      {
+        "name": "document-skills",
+        "fileCount": 130,
+        "description": "Skill definitions"
+      },
+      {
+        "name": "domain-name-brainstormer",
+        "fileCount": 1,
+        "description": "AI/LLM integration"
+      },
+      {
+        "name": "file-organizer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "image-enhancer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "internal-comms",
+        "fileCount": 6,
+        "description": "Internal-comm definitions"
+      },
+      {
+        "name": "invoice-organizer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "langsmith-fetch",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "lead-research-assistant",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "mcp-builder",
+        "fileCount": 10,
+        "description": "MCP server implementation"
+      },
+      {
+        "name": "meeting-insights-analyzer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "raffle-winner-picker",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "skill-creator",
+        "fileCount": 5,
+        "description": "Module directory"
+      },
+      {
+        "name": "skill-share",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "slack-gif-creator",
+        "fileCount": 23,
+        "description": "Module directory"
+      },
+      {
+        "name": "tailored-resume-generator",
+        "fileCount": 1,
+        "description": "AI/LLM integration"
+      },
+      {
+        "name": "template-skill",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "theme-factory",
+        "fileCount": 13,
+        "description": "Module directory"
+      },
+      {
+        "name": "twitter-algorithm-optimizer",
+        "fileCount": 1,
+        "description": "Module directory"
+      },
+      {
+        "name": "video-downloader",
+        "fileCount": 2,
+        "description": "Module directory"
+      },
+      {
+        "name": "webapp-testing",
+        "fileCount": 6,
+        "description": "Test files"
+      }
+    ],
+    "languageDistribution": [
+      {
+        "extension": ".md",
+        "count": 892
+      },
+      {
+        "extension": ".xsd",
+        "count": 78
+      },
+      {
+        "extension": ".py",
+        "count": 62
+      },
+      {
+        "extension": ".ttf",
+        "count": 54
+      },
+      {
+        "extension": ".txt",
+        "count": 42
+      },
+      {
+        "extension": ".xml",
+        "count": 6
+      },
+      {
+        "extension": ".sh",
+        "count": 2
+      },
+      {
+        "extension": ".pdf",
+        "count": 1
+      },
+      {
+        "extension": ".gz",
+        "count": 1
+      },
+      {
+        "extension": ".js",
+        "count": 1
+      }
+    ]
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "Generators",
+        "description": "Content and object generation",
+        "directories": [
+          "mcp-builder/scripts",
+          "slack-gif-creator/core"
+        ],
+        "symbolCount": 14,
+        "dependsOn": []
+      },
+      {
+        "name": "Utils",
+        "description": "Shared utilities and helpers",
+        "directories": [
+          "document-skills/docx/scripts"
+        ],
+        "symbolCount": 2,
+        "dependsOn": []
+      }
+    ],
+    "patterns": [
+      {
+        "name": "Builder",
+        "confidence": 0.85,
+        "description": "Separates object construction from its representation",
+        "occurrences": 1
+      }
+    ],
+    "entryPoints": [],
+    "mainEntryPoints": [],
+    "moduleExports": []
+  },
+  "symbols": {
+    "classes": [
+      {
+        "name": "BaseSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/pptx/ooxml/scripts/validation/base.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "BaseSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/docx/ooxml/scripts/validation/base.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "Document",
+        "kind": "class",
+        "file": "document-skills/docx/scripts/document.py",
+        "line": 612,
+        "exported": true
+      },
+      {
+        "name": "DOCXSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/pptx/ooxml/scripts/validation/docx.py",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "DOCXSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/docx/ooxml/scripts/validation/docx.py",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "DocxXMLEditor",
+        "kind": "class",
+        "file": "document-skills/docx/scripts/document.py",
+        "line": 47,
+        "exported": true
+      },
+      {
+        "name": "GIFBuilder",
+        "kind": "class",
+        "file": "slack-gif-creator/core/gif_builder.py",
+        "line": 16,
+        "exported": true
+      },
+      {
+        "name": "MCPConnection",
+        "kind": "class",
+        "file": "mcp-builder/scripts/connections.py",
+        "line": 13,
+        "exported": true
+      },
+      {
+        "name": "MCPConnectionHTTP",
+        "kind": "class",
+        "file": "mcp-builder/scripts/connections.py",
+        "line": 100,
+        "exported": true
+      },
+      {
+        "name": "MCPConnectionSSE",
+        "kind": "class",
+        "file": "mcp-builder/scripts/connections.py",
+        "line": 88,
+        "exported": true
+      },
+      {
+        "name": "MCPConnectionStdio",
+        "kind": "class",
+        "file": "mcp-builder/scripts/connections.py",
+        "line": 73,
+        "exported": true
+      },
+      {
+        "name": "ParagraphData",
+        "kind": "class",
+        "file": "document-skills/pptx/scripts/inventory.py",
+        "line": 137,
+        "exported": true
+      },
+      {
+        "name": "Particle",
+        "kind": "class",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 16,
+        "exported": true
+      },
+      {
+        "name": "ParticleSystem",
+        "kind": "class",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 106,
+        "exported": true
+      },
+      {
+        "name": "PPTXSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/pptx/ooxml/scripts/validation/pptx.py",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "PPTXSchemaValidator",
+        "kind": "class",
+        "file": "document-skills/docx/ooxml/scripts/validation/pptx.py",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "RectAndField",
+        "kind": "class",
+        "file": "document-skills/pdf/scripts/check_bounding_boxes.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "RedliningValidator",
+        "kind": "class",
+        "file": "document-skills/pptx/ooxml/scripts/validation/redlining.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "RedliningValidator",
+        "kind": "class",
+        "file": "document-skills/docx/ooxml/scripts/validation/redlining.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "ShapeData",
+        "kind": "class",
+        "file": "document-skills/pptx/scripts/inventory.py",
+        "line": 266,
+        "exported": true
+      },
+      {
+        "name": "ShapeWithPosition",
+        "kind": "class",
+        "file": "document-skills/pptx/scripts/inventory.py",
+        "line": 129,
+        "exported": true
+      },
+      {
+        "name": "TestGetBoundingBoxMessages",
+        "kind": "class",
+        "file": "document-skills/pdf/scripts/check_bounding_boxes_test.py",
+        "line": 8,
+        "exported": true
+      },
+      {
+        "name": "XMLEditor",
+        "kind": "class",
+        "file": "document-skills/docx/scripts/utilities.py",
+        "line": 41,
+        "exported": true
+      }
+    ],
+    "interfaces": [],
+    "functions": [
+      {
+        "name": "add_drop_shadow",
+        "kind": "function",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 373,
+        "exported": true
+      },
+      {
+        "name": "add_glow_effect",
+        "kind": "function",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 340,
+        "exported": true
+      },
+      {
+        "name": "add_motion_blur",
+        "kind": "function",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 213,
+        "exported": true
+      },
+      {
+        "name": "add_vignette",
+        "kind": "function",
+        "file": "slack-gif-creator/core/frame_composer.py",
+        "line": 392,
+        "exported": true
+      },
+      {
+        "name": "agent_loop",
+        "kind": "function",
+        "file": "mcp-builder/scripts/evaluation.py",
+        "line": 86,
+        "exported": true
+      },
+      {
+        "name": "apply_font_properties",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/replace.py",
+        "line": 113,
+        "exported": true
+      },
+      {
+        "name": "apply_kaleidoscope",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/kaleidoscope.py",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "apply_opacity",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/fade.py",
+        "line": 149,
+        "exported": true
+      },
+      {
+        "name": "apply_paragraph_properties",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/replace.py",
+        "line": 43,
+        "exported": true
+      },
+      {
+        "name": "apply_replacements",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/replace.py",
+        "line": 214,
+        "exported": true
+      },
+      {
+        "name": "apply_screen_shake",
+        "kind": "function",
+        "file": "slack-gif-creator/core/visual_effects.py",
+        "line": 474,
+        "exported": true
+      },
+      {
+        "name": "apply_simple_mirror",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/kaleidoscope.py",
+        "line": 86,
+        "exported": true
+      },
+      {
+        "name": "apply_squash_stretch",
+        "kind": "function",
+        "file": "slack-gif-creator/core/easing.py",
+        "line": 163,
+        "exported": true
+      },
+      {
+        "name": "apply_trail_effect",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/move.py",
+        "line": 199,
+        "exported": true
+      },
+      {
+        "name": "blend_colors",
+        "kind": "function",
+        "file": "slack-gif-creator/core/color_palettes.py",
+        "line": 199,
+        "exported": true
+      },
+      {
+        "name": "calculate_arc_motion",
+        "kind": "function",
+        "file": "slack-gif-creator/core/easing.py",
+        "line": 194,
+        "exported": true
+      },
+      {
+        "name": "calculate_overlap",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/inventory.py",
+        "line": 849,
+        "exported": true
+      },
+      {
+        "name": "check_duplicate_keys",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/replace.py",
+        "line": 204,
+        "exported": true
+      },
+      {
+        "name": "check_slack_size",
+        "kind": "function",
+        "file": "slack-gif-creator/core/validators.py",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "check_yt_dlp",
+        "kind": "function",
+        "file": "video-downloader/scripts/download_video.py",
+        "line": 13,
+        "exported": true
+      },
+      {
+        "name": "clear_paragraph_bullets",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/replace.py",
+        "line": 26,
+        "exported": true
+      },
+      {
+        "name": "collect_shapes_with_absolute_positions",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/inventory.py",
+        "line": 766,
+        "exported": true
+      },
+      {
+        "name": "composite_layers",
+        "kind": "function",
+        "file": "slack-gif-creator/core/frame_composer.py",
+        "line": 160,
+        "exported": true
+      },
+      {
+        "name": "condense_xml",
+        "kind": "function",
+        "file": "document-skills/pptx/ooxml/scripts/pack.py",
+        "line": 133,
+        "exported": true
+      },
+      {
+        "name": "condense_xml",
+        "kind": "function",
+        "file": "document-skills/docx/ooxml/scripts/pack.py",
+        "line": 133,
+        "exported": true
+      },
+      {
+        "name": "convert",
+        "kind": "function",
+        "file": "document-skills/pdf/scripts/convert_pdf_to_images.py",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "convert_to_images",
+        "kind": "function",
+        "file": "document-skills/pptx/scripts/thumbnail.py",
+        "line": 197,
+        "exported": true
+      },
+      {
+        "name": "create_attention_pulse",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/pulse.py",
+        "line": 156,
+        "exported": true
+      },
+      {
+        "name": "create_blank_frame",
+        "kind": "function",
+        "file": "slack-gif-creator/core/frame_composer.py",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "create_bounce_animation",
+        "kind": "function",
+        "file": "slack-gif-creator/templates/bounce.py",
+        "line": 19,
+        "exported": true
+      }
+    ],
+    "types": [],
+    "enums": []
+  },
+  "publicAPI": [
+    {
+      "name": "add_drop_shadow",
+      "kind": "function",
+      "file": "slack-gif-creator/core/visual_effects.py",
+      "line": 373,
+      "exported": true
+    },
+    {
+      "name": "add_glow_effect",
+      "kind": "function",
+      "file": "slack-gif-creator/core/visual_effects.py",
+      "line": 340,
+      "exported": true
+    },
+    {
+      "name": "add_motion_blur",
+      "kind": "function",
+      "file": "slack-gif-creator/core/visual_effects.py",
+      "line": 213,
+      "exported": true
+    },
+    {
+      "name": "add_vignette",
+      "kind": "function",
+      "file": "slack-gif-creator/core/frame_composer.py",
+      "line": 392,
+      "exported": true
+    },
+    {
+      "name": "agent_loop",
+      "kind": "function",
+      "file": "mcp-builder/scripts/evaluation.py",
+      "line": 86,
+      "exported": true
+    },
+    {
+      "name": "apply_font_properties",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/replace.py",
+      "line": 113,
+      "exported": true
+    },
+    {
+      "name": "apply_kaleidoscope",
+      "kind": "function",
+      "file": "slack-gif-creator/templates/kaleidoscope.py",
+      "line": 18,
+      "exported": true
+    },
+    {
+      "name": "apply_opacity",
+      "kind": "function",
+      "file": "slack-gif-creator/templates/fade.py",
+      "line": 149,
+      "exported": true
+    },
+    {
+      "name": "apply_paragraph_properties",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/replace.py",
+      "line": 43,
+      "exported": true
+    },
+    {
+      "name": "apply_replacements",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/replace.py",
+      "line": 214,
+      "exported": true
+    },
+    {
+      "name": "apply_screen_shake",
+      "kind": "function",
+      "file": "slack-gif-creator/core/visual_effects.py",
+      "line": 474,
+      "exported": true
+    },
+    {
+      "name": "apply_simple_mirror",
+      "kind": "function",
+      "file": "slack-gif-creator/templates/kaleidoscope.py",
+      "line": 86,
+      "exported": true
+    },
+    {
+      "name": "apply_squash_stretch",
+      "kind": "function",
+      "file": "slack-gif-creator/core/easing.py",
+      "line": 163,
+      "exported": true
+    },
+    {
+      "name": "apply_trail_effect",
+      "kind": "function",
+      "file": "slack-gif-creator/templates/move.py",
+      "line": 199,
+      "exported": true
+    },
+    {
+      "name": "BaseSchemaValidator",
+      "kind": "class",
+      "file": "document-skills/pptx/ooxml/scripts/validation/base.py",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "BaseSchemaValidator",
+      "kind": "class",
+      "file": "document-skills/docx/ooxml/scripts/validation/base.py",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "blend_colors",
+      "kind": "function",
+      "file": "slack-gif-creator/core/color_palettes.py",
+      "line": 199,
+      "exported": true
+    },
+    {
+      "name": "calculate_arc_motion",
+      "kind": "function",
+      "file": "slack-gif-creator/core/easing.py",
+      "line": 194,
+      "exported": true
+    },
+    {
+      "name": "calculate_overlap",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/inventory.py",
+      "line": 849,
+      "exported": true
+    },
+    {
+      "name": "check_duplicate_keys",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/replace.py",
+      "line": 204,
+      "exported": true
+    },
+    {
+      "name": "check_slack_size",
+      "kind": "function",
+      "file": "slack-gif-creator/core/validators.py",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "check_yt_dlp",
+      "kind": "function",
+      "file": "video-downloader/scripts/download_video.py",
+      "line": 13,
+      "exported": true
+    },
+    {
+      "name": "clear_paragraph_bullets",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/replace.py",
+      "line": 26,
+      "exported": true
+    },
+    {
+      "name": "collect_shapes_with_absolute_positions",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/inventory.py",
+      "line": 766,
+      "exported": true
+    },
+    {
+      "name": "composite_layers",
+      "kind": "function",
+      "file": "slack-gif-creator/core/frame_composer.py",
+      "line": 160,
+      "exported": true
+    },
+    {
+      "name": "condense_xml",
+      "kind": "function",
+      "file": "document-skills/pptx/ooxml/scripts/pack.py",
+      "line": 133,
+      "exported": true
+    },
+    {
+      "name": "condense_xml",
+      "kind": "function",
+      "file": "document-skills/docx/ooxml/scripts/pack.py",
+      "line": 133,
+      "exported": true
+    },
+    {
+      "name": "convert",
+      "kind": "function",
+      "file": "document-skills/pdf/scripts/convert_pdf_to_images.py",
+      "line": 10,
+      "exported": true
+    },
+    {
+      "name": "convert_to_images",
+      "kind": "function",
+      "file": "document-skills/pptx/scripts/thumbnail.py",
+      "line": 197,
+      "exported": true
+    },
+    {
+      "name": "create_attention_pulse",
+      "kind": "function",
+      "file": "slack-gif-creator/templates/pulse.py",
+      "line": 156,
+      "exported": true
+    }
+  ],
+  "dependencies": {
+    "mostImported": []
+  },
+  "stats": {
+    "totalSymbols": 198,
+    "exportedSymbols": 195,
+    "analysisTimeMs": 174
+  },
+  "keyFiles": [],
+  "navigation": {
+    "tests": "src/**/*.test.ts",
+    "config": [],
+    "types": [],
+    "mainLogic": [
+      "src"
+    ]
+  }
+}
