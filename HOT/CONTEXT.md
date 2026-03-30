@@ -8,8 +8,9 @@ Manual estratégico para operação de venda de conteúdo adulto nas plataformas
 
 ## Estrutura do Manual (Capítulos Planejados)
 - [x] **Capítulo 1** — Mapeamento de Audiência (Buyer Personas)
-- [ ] **Capítulo 2** — Arquitetura de Funil e Sequência de Bot (foco: Impulsivo)
-- [ ] Capítulos subsequentes a definir
+- [x] **Seção 2** — Engenharia Reversa de Tráfego (padrões de anúncio Meta)
+- [x] **Seção 3** — Protocolo de Copy do Funil Telegram (roteiros exatos dos 5 nós do bot)
+- [ ] **Seção 4** — Escala de Tráfego e Estrutura de Métricas
 
 ---
 
@@ -88,3 +89,4 @@ Início → Mensagem Composta (texto + imagem + botões)
 ## Arquivos do Projeto
 - `CONTEXT.md` — este arquivo (contexto geral do projeto)
 - `secao-2-engenharia-reversa-trafego.md` — padrões de anúncio Meta, copy seguro, CTA para Telegram, contingência de contas
+- `secao-3-protocolo-copy-funil-telegram.md` — roteiros exatos dos 5 nós: /start, pitch, order bump, upsell WhatsApp, recuperação de carrinho
