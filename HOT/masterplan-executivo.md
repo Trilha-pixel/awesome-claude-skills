@@ -17,7 +17,7 @@
 1. [Mapeamento de Audiência — As 3 Buyer Personas](#seção-1)
 2. [Engenharia Reversa de Tráfego — O que Funciona nos Anúncios](#seção-2)
 3. [Protocolo de Copy — Os Roteiros Exatos do Bot](#seção-3)
-4. [Arquitetura Técnica — N8N + Shark Bot Nó a Nó](#seção-4)
+4. [Arquitetura Técnica — Shark Bot Nó a Nó](#seção-4)
 5. [Projeção Financeira](#projeção)
 6. [Próximos Passos](#próximos-passos)
 
@@ -417,68 +417,69 @@ Valor continua R$ 27,90. Não muda.
 ---
 
 <a name="seção-4"></a>
-# SEÇÃO 4 — Arquitetura Técnica N8N + Shark Bot
+# SEÇÃO 4 — Arquitetura Técnica Shark Bot
 
-> **Nota de campo:** operações lucrativas nesse mercado **não usam landing page intermediária**.
-> O tráfego vai direto do anúncio para o bot. O aquecimento acontece dentro do próprio bot —
-> na primeira mensagem, com foto da modelo + copy de oferta + botões de compra imediatos.
+> O Shark Bot é o orquestrador completo do funil — sem ferramentas externas.
+> A aprovação do PIX, a entrega de acesso (nó Grupo Temporário) e o disparo
+> de upsell acontecem todos dentro da mesma plataforma, automaticamente.
 
-## Visão Geral das Camadas
+## Stack da Operação
 
-| Camada | Ferramenta | Responsabilidade |
-|---|---|---|
-| Aquisição | Meta Ads | Clique direto para o bot — zero fricção |
-| Conversão | Shark Bot (Telegram) | Pitch, pagamento e entrega |
-| Automação | N8N | Webhook, liberação de acesso, upsell, relatórios |
-| Controle | Google Sheets | Registro de compradores e métricas |
-
----
-
-## Fluxo Técnico Completo
-
-```
-[META ADS]
- Foto da modelo + copy 1 linha · Link: t.me/[bot]?start=fb
-      ↓ clique direto
-[SHARK BOT — /start]
- Detecta origem · Registra primeiro_nome
-      ↓
-[SHARK BOT — Mensagem de Abertura]
- [FOTO] + Copy direto + Lista de conteúdo
- + Urgência de preço (deadline 23:59)
- ┌─────────────────────────────────┐
- │ BOTÃO: Vitalício + ZAP R$27,97  │
- │ BOTÃO: WhatsApp VIP R$15,00     │
- │ BOTÃO: Acesso 73%OFF R$14,90    │
- └─────────────────────────────────┘
-      ↓ qualquer botão
-[ORDER BUMP — antes do código PIX]
- Para planos sem ZAP: oferta de upgrade +R$12
-      ↓
-[PIX GERADO]
-      │
-      ├── [SEM PAGAMENTO — 15min]
-      │    Smart Delay → Recuperação + bônus áudio
-      │    [SEM PAGAMENTO — 45min]
-      │    Oferta R$9,90 · encerra fluxo
-      │
-      └── [PAGAMENTO CONFIRMADO]
-               ↓
-          [N8N — Webhook Trigger]
-          ├── IF: plano inclui ZAP?
-          ├── Liberar acesso canal (API Telegram)
-          ├── Registrar Google Sheets
-          └── [30s] → Upsell WhatsApp R$47,00
-                    ├── [Sim] → PIX R$47 → N8N repete
-                    └── [Não] → Link canal + encerra
-```
+| Camada | Ferramenta |
+|---|---|
+| Aquisição | Meta Ads — link direto `t.me/[bot]?start=fb` |
+| Funil completo | Shark Bot (todos os nós) |
+| Entrega de acesso | Nó **Grupo Temporário** (nativo) |
+| Upsell pós-compra | Nó **Upsell** (nativo) |
+| Recuperação | Nó **Smart Delay** + **Downsell** (nativos) |
 
 ---
 
-## Mensagem de Abertura do Bot (Nó Principal)
+## Fluxo Nó a Nó
 
 ```
-[FOTO — modelo, pose sugestiva, alta qualidade]
+[INÍCIO]
+ Trigger: usuário abre o bot
+      ↓
+[MENSAGEM COMPOSTA — Abertura]
+ [FOTO] + Copy + Urgência 23:59 + 3 botões PIX simultâneos
+ ┌─────────────────────────────────────┐
+ │ 🎁 VITALÍCIO + ZAP 🔞 — R$ 27,97   │
+ │ MEU WHATSAPP — R$ 15,00            │
+ │ ACESSO VITALÍCIO (73% OFF) R$14,90  │
+ └─────────────────────────────────────┘
+      ↓
+[ORDER BUMP] ← campo "Mensagem antes do código" nos nós PIX sem ZAP
+      ↓
+[GERAR PIX] — 3 instâncias (R$27,97 / R$15,00 / R$14,90)
+      │
+      ├── [PAGO]
+      │     ↓
+      │   [GRUPO TEMPORÁRIO] — adiciona ao canal privado automaticamente
+      │     ↓
+      │   [ATRASO 30s]
+      │     ↓
+      │   [UPSELL] — áudio + oferta WhatsApp R$47,00
+      │     ├── Sim → PIX R$47,00 → GRUPO TEMPORÁRIO (WhatsApp)
+      │     └── Não → encerramento
+      │
+      └── [SEM PAGAMENTO — 15min]
+            ↓
+          [SMART DELAY 15min]
+            ↓
+          [MENSAGEM RECUPERAÇÃO] — GIF + bônus áudio + mesmo PIX
+            ↓
+          [SMART DELAY 45min] — se ainda não pagou
+            ↓
+          [DOWNSELL] — R$9,90 · encerra fluxo
+```
+
+---
+
+## Mensagem de Abertura do Bot
+
+```
+[FOTO — modelo, alta qualidade]
 
 Oi {{primeiro_nome}} 🥵 eu sou a [Nome] e tenho
 só [idade] aninhos, mas já faço coisas que você
@@ -493,58 +494,43 @@ nem imagina... 🔞
 ⚠️ 7 Dias de Garantia — não gostou, devolvemos tudo
 
 🚨 VIP por apenas R$ 14,90 até às 23:59 de hoje!
-Depois o valor sobe para R$ 29,90.
-Aproveita antes que aumente 🙈👇
+Depois sobe para R$ 29,90. Aproveita antes 🙈👇
 ```
-
-Botões simultâneos:
-- `🎁 VITALÍCIO + ZAP 🔞 — R$ 27,97`
-- `MEU WHATSAPP — R$ 15,00`
-- `ACESSO VITALÍCIO (73% OFF) — R$ 14,90`
-
----
-
-## Configuração do Webhook N8N
-
-**Payload enviado pelo Shark Bot ao confirmar pagamento:**
-```json
-{
-  "user_id": "123456789",
-  "first_name": "João",
-  "valor_pago": 14.90,
-  "plano": "Acesso Vitalício",
-  "timestamp": "2026-03-30T22:50:00Z",
-  "origem": "fb"
-}
-```
-
-**Ações do N8N após receber o webhook:**
-1. IF: plano inclui ZAP? → definir tipo de acesso
-2. Liberar acesso via API Telegram (invite link único)
-3. Registrar comprador no Google Sheets
-4. Aguardar 30 segundos
-5. Disparar Upsell WhatsApp via Shark Bot API (para quem comprou sem ZAP)
 
 ---
 
 ## Estratégia de Preço — Deadline Diária
 
 ```
-Até 23:59 → R$14,90 (entrada de impulso)
-Após meia-noite → R$29,90 (preço padrão)
+08:00 → 23:59   R$14,90 (urgência ativa)
+00:00 → 07:59   R$29,90 (preço padrão)
 ```
 
-Configurar troca automática via nó **Gatilho agendado** no Shark Bot. A urgência com
-prazo verificável é o principal acelerador de conversão para o Impulsivo.
+Configurar via nó **Gatilho agendado** no Shark Bot para atualizar o valor do PIX
+e o texto do botão automaticamente — zero intervenção manual.
 
 ---
 
-## KPIs — Acompanhamento Semanal
+## Entrega de Acesso — Nó Grupo Temporário
+
+O Shark Bot adiciona o comprador ao canal privado automaticamente ao confirmar o PIX.
+Nenhuma ação manual necessária. Configuração do nó:
+
+```
+Canal/Grupo: [ID do canal privado no Telegram]
+Duração: Vitalício
+Mensagem de entrada:
+  "Bem-vindo ao privado 🔒
+   Aqui tem tudo que prometi.
+   Qualquer dúvida é só me chamar 🤍"
+```
+
+---
+
+## KPIs — Acompanhamento pelo Shark Bot Stats
 
 | Métrica | Meta |
 |---|---|
-| CTR do anúncio | > 2,5% |
-| CPL (custo por /start) | < R$2,00 |
 | Taxa /start → botão clicado | > 60% |
 | Taxa botão → PIX gerado | > 70% |
 | Taxa PIX gerado → Pago | > 35% |
@@ -552,7 +538,7 @@ prazo verificável é o principal acelerador de conversão para o Impulsivo.
 | Taxa Recuperação (15min) | > 10% |
 | Taxa Upsell WhatsApp | > 15% |
 | Ticket médio | > R$28,00 |
-| ROAS | > 3x |
+| ROAS (cruzar com Meta Ads) | > 3x |
 
 ---
 
@@ -655,5 +641,5 @@ HOT/
 
 ---
 
-*Documento gerado em 30/03/2026 · Versão 1.0 · Confidencial*
+*Documento gerado em 30/03/2026 · Versão 1.1 · Confidencial*
 *Para exportar em PDF: abrir no VS Code → extensão Markdown PDF → Export (pdf)*

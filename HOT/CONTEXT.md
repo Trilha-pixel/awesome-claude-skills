@@ -100,5 +100,5 @@ Meta Ads (foto da modelo + copy 1 linha)
 - `CONTEXT.md` — este arquivo (contexto geral do projeto)
 - `secao-2-engenharia-reversa-trafego.md` — padrões de anúncio Meta, copy seguro, CTA para Telegram, contingência de contas
 - `secao-3-protocolo-copy-funil-telegram.md` — roteiros exatos dos 5 nós: /start, pitch, order bump, upsell WhatsApp, recuperação de carrinho
-- `secao-4-arquitetura-funil-n8n-sharkbot.md` — arquitetura técnica nó a nó, webhook N8N, pre-sell quiz, KPIs
+- `secao-4-arquitetura-funil-n8n-sharkbot.md` — arquitetura técnica nó a nó (100% Shark Bot, sem ferramentas externas), KPIs
 - `masterplan-executivo.md` — documento unificado com projeção financeira e plano de execução, pronto para PDF
