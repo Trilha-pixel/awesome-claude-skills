@@ -10,7 +10,8 @@ Manual estratégico para operação de venda de conteúdo adulto nas plataformas
 - [x] **Capítulo 1** — Mapeamento de Audiência (Buyer Personas)
 - [x] **Seção 2** — Engenharia Reversa de Tráfego (padrões de anúncio Meta)
 - [x] **Seção 3** — Protocolo de Copy do Funil Telegram (roteiros exatos dos 5 nós do bot)
-- [ ] **Seção 4** — Escala de Tráfego e Estrutura de Métricas
+- [x] **Seção 4** — Arquitetura Técnica N8N + Shark Bot (nó a nó)
+- [x] **Masterplan Executivo** — documento unificado, pronto para PDF
 
 ---
 
@@ -76,17 +77,28 @@ Manual estratégico para operação de venda de conteúdo adulto nas plataformas
 ---
 
 ## Funil Operacional (Shark Bot — sharkbot.com.br)
-Estrutura atual mapeada:
+**Modelo real confirmado por análise de concorrência: sem landing page. Face Ads → direto para o bot.**
+
+Estrutura revisada:
 ```
-Início → Mensagem Composta (texto + imagem + botões)
-              ↓                         ↓
-    PIX R$19,78 (Impulsivo)    PIX R$27,98 (Carente/GFE)
-  "Acesso Vitalício imediato"  "Acesso Vitalício + ZAP"
+Meta Ads (foto da modelo + copy 1 linha)
+  ↓ link direto: t.me/[bot]?start=fb
+/start → Mensagem de Abertura (foto + copy + 3 botões simultâneos)
+  ├── PIX R$14,90 — Acesso Vitalício (73% OFF, deadline 23:59)
+  ├── PIX R$27,97 — Vitalício + ZAP
+  └── PIX R$15,00 — Só WhatsApp VIP
+        ↓ (todos com Order Bump antes do código PIX)
+  PIX gerado → Aguarda pagamento
+  ├── Confirmado → N8N webhook → libera acesso → Upsell WhatsApp R$47,00
+  └── 15min sem pagar → Smart Delay → Recuperação + bônus áudio
 ```
-- Nós disponíveis: Atraso, Smart Delay, Gatilho, Randomizer, Go To, Upsell, Downsell, Grupo Temporário
-- Order Bump já disponível na plataforma — usar após R$19,78 para upgrade
+
+- Estratégia de preço: deadline diária às 23:59 (R$14,90 → R$29,90 após meia-noite)
+- Nós disponíveis: Atraso, Smart Delay, Gatilho (agendado para troca de preço), Randomizer, Go To, Upsell, Downsell, Grupo Temporário, Order Bump
 
 ## Arquivos do Projeto
 - `CONTEXT.md` — este arquivo (contexto geral do projeto)
 - `secao-2-engenharia-reversa-trafego.md` — padrões de anúncio Meta, copy seguro, CTA para Telegram, contingência de contas
 - `secao-3-protocolo-copy-funil-telegram.md` — roteiros exatos dos 5 nós: /start, pitch, order bump, upsell WhatsApp, recuperação de carrinho
+- `secao-4-arquitetura-funil-n8n-sharkbot.md` — arquitetura técnica nó a nó, webhook N8N, pre-sell quiz, KPIs
+- `masterplan-executivo.md` — documento unificado com projeção financeira e plano de execução, pronto para PDF
