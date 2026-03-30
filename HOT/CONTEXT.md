@@ -87,4 +87,4 @@ Início → Mensagem Composta (texto + imagem + botões)
 
 ## Arquivos do Projeto
 - `CONTEXT.md` — este arquivo (contexto geral do projeto)
-- *(demais capítulos serão adicionados aqui conforme criados)*
+- `secao-2-engenharia-reversa-trafego.md` — padrões de anúncio Meta, copy seguro, CTA para Telegram, contingência de contas
